@@ -1,0 +1,1 @@
+.\tcdb.exe  uart 1
