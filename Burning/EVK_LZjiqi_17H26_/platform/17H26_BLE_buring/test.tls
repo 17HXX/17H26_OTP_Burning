@@ -9,7 +9,7 @@ reg_write(0x73,0)                       # must
 #led_state(0x00,0x00,0x00,0x00,0x00) 
 #led_state(0x00,0x09,0x08,0x01,0x08)
 #led_state(0x00,0x00,0x05,0x0a,0x00)  
-led_state(0x00,0x09,0x08,0x02,0x04)    				#burning led config  
+led_state(0x00,0x09,0x08,0x02,0x04)    
 
 
 #Add random delay to avoid RF interference
@@ -18,7 +18,7 @@ rand_delay(60000)
 
 
 #GPIO test
-repeat(0)						#not do
+repeat(0)
 begin
 fast_load(dut_5318_gpio.bin,1,4)
 gpio(...)   #reference:remington_gpio_map.txt
@@ -26,7 +26,7 @@ end
 
 
 #RF trx test
-repeat(0)								#not do
+repeat(0)
 begin
 #config[33] = 0xd8   #if EVK has frequency compensation,add freoff adjust
 fast_load(dut_5318_rf.bin,1,4)
@@ -37,6 +37,10 @@ tx_test(200,160,-60,-80,80,168)
 rf_check(2)
 end
 
+
+
+
+
 fast_load(dut_5318_otp.bin,1,4)
 #rand_delay(6000)
 ext_vpp()
@@ -46,10 +50,9 @@ ext_vpp()
 write(17H26_Lenze_ARGun_3432_171206.bin,0,0,3)  		#otp write firmware
 ##########################################################################
 
-#write_bytes(0x3fe8,0xfe,1,0,3)  						#write freq_offset  config
+write_bytes(0x3fe8,0xfe,1,0,3)  						#write freq_offset  config
 
-write_id(0x3fe0,4,0,3)									#otp write id  -- MAC addresse
-
+write_id(0x3fe0,4,0,3)														  	#otp write id
 write_bytes(0x3ff0,0x060298bf,4,0,3)  						
 write_bytes(0x3ff4,0x060301bf,4,0,3)   
 write_bytes(0x3ff8,0x0000f83f,4,0,3)
@@ -63,7 +66,7 @@ fast_load(dut_5318_otp_normal_check.bin,1,4)
 write(17H26_Lenze_ARGun_3432_171206.bin,0,2,3) 		 #otp check firmware
 ##########################################################################
 
-#write_bytes(0x3fe8,0xfe,1,2,3)  					 #write freq_offset  config	  check
+write_bytes(0x3fe8,0xfe,1,2,3)  					 #write freq_offset  config	  check
 
 write_id(0x3fe0,4,4,3)	  	  						 #otp normal read id check
 write_bytes(0x3ff0,0x060298bf,4,2,3) 

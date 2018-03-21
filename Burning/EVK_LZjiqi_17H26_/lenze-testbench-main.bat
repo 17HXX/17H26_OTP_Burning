@@ -1,9 +1,9 @@
 echo OFF
 setlocal enabledelayedexpansion
 echo ############################################
-echo ##---- Lenze   Evktestbench tools 2.0---- ##
+echo ##---- lenze   Evktestbench tools 2.0---- ##
 echo ############################################
-echo   author:xiaobaicai
+echo   author:xiaodong.zong  [version:2013-06-15]
 echo --------------------------------------------
 
 cd platform
