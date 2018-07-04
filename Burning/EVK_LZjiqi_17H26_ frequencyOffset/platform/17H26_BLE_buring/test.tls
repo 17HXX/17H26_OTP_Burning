@@ -42,6 +42,11 @@ fast_load(dut_5318_otp.bin,1,4)
 ext_vpp()
 #rand_delay(60000)
 # down below you choose to use either config 1 or config 2 !!
+# here we use config 1 by default !
+
+
+####################################################### 
+				
 ########################################################
 #write freq_offset  config 1 :Using crystal external capacity
 write_bytes(0x3fe8,0xfe,1,0,3)  				 
