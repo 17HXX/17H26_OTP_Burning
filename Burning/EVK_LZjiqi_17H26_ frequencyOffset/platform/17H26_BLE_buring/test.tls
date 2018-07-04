@@ -1,0 +1,63 @@
+config[14] = 1                          # set color mode.
+config[0] = 1		                        # debug level 0~3  	
+config[15]= 13                          #swire speed
+config[2]=  3		                        # id mode: 3 for rolling id
+config[18] = 500                        #fastload offset time unit£ºms
+config[23] = 1					                #no test mode 3v3dut electrical level      1£º3V3        0£ºoff
+reg_write(0x73,0)                       # must
+#config led by yourself
+#led_state(0x00,0x00,0x00,0x00,0x00) 
+#led_state(0x00,0x09,0x08,0x01,0x08)
+#led_state(0x00,0x00,0x05,0x0a,0x00)  
+led_state(0x00,0x09,0x08,0x02,0x04)    				#burning led config  
+
+
+#Add random delay to avoid RF interference
+#rand_delay(60000)
+rand_delay(60000)
+
+
+#GPIO test
+repeat(0)						#not do
+begin
+fast_load(dut_5318_gpio.bin,1,4)
+gpio(...)   #reference:remington_gpio_map.txt
+end
+
+
+#RF trx test
+repeat(0)								#not do
+begin
+#config[33] = 0xd8   #if EVK has frequency compensation,add freoff adjust
+fast_load(dut_5318_rf.bin,1,4)
+rx_test(200,160,-60,168)
+tx_test(200,160,-60,-80,80,168)
+rx_test(200,160,-60,168)
+tx_test(200,160,-60,-80,80,168)
+rf_check(2)
+end
+
+fast_load(dut_5318_otp.bin,1,4)
+#rand_delay(6000)
+ext_vpp()
+#rand_delay(60000)
+# down below you choose to use either config 1 or config 2 !!
+########################################################
+#write freq_offset  config 1 :Using crystal external capacity
+write_bytes(0x3fe8,0xfe,1,0,3)  				 
+ 
+write_bytes(0x3fe8,0xfe,1,2,3)  
+#write freq_offset  config	  check
+####################################################### 
+				
+########################################################
+#write freq_offset  config 2:Using crystal internal capacity
+
+#write_bytes(0x3fe8,0xd2,1,0,3)  				 
+ 
+#write_bytes(0x3fe8,0xd2,1,2,3)  
+#write freq_offset  config	  check
+####################################################### 
+
+
+stop()

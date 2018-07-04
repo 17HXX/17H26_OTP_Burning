@@ -1,0 +1,1 @@
+start .\ConEmu\ConEmu.exe ".\tcdb.exe  uart 1"

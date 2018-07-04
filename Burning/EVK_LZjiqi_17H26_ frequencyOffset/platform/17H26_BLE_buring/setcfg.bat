@@ -4,8 +4,8 @@
 ..\..\tcdb.exe wf 3d000 60000001 -u
 ..\..\tcdb.exe wf 41000 60000001 -u
 ..\..\tcdb.exe wf 42000 60000001 -u
-..\..\tcdb.exe wf 3d004 cd689755 -u
-..\..\tcdb.exe wf 3d008 cc8c1e10 -u
+..\..\tcdb.exe wf 3d004 456ea677 -u
+..\..\tcdb.exe wf 3d008 f57d573a -u
 ..\..\tcdb.exe wf 3e000 -s 1 -eu
 ..\..\tcdb.exe wf 3e000 05 -u
 ..\..\tcdb.exe wf 3e001 05 -u
@@ -15,7 +15,7 @@
 ..\..\tcdb.exe wf 3e005 23 -u
 ..\..\tcdb.exe wf 3e006 1f -u
 ..\..\tcdb.exe wf 3e007 20 -u
-..\..\tcdb.exe wf 3e012 66b4 -u
+..\..\tcdb.exe wf 3e012 22b7 -u
 ..\..\tcdb.exe wf 3e014 05 -u
 ..\..\tcdb.exe wf 3e015 09 -u
 ..\..\tcdb.exe wf 3e016 0d -u
